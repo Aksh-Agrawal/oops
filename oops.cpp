@@ -145,41 +145,57 @@ using namespace std;
 
 // deep copy (heap)
 
+// Demonstrating deep copy in C++ using a class
 
-class student{
+class student {
     public:
-        string name;
-        float* cgpaptr;
+        string name; // Student's name
+        float* cgpaptr; // Pointer to store CGPA in heap memory
     
-        student(string name , float cgpa){
-            cout<<"Constructor strats"<<endl;
-            this->name = name ;
-           cgpaptr = new float;
-           *cgpaptr = cgpa; 
+        // Parameterized constructor
+        student(string name, float cgpa) {
+            cout << "Constructor starts" << endl;
+            this->name = name; // Assigning name
+            cgpaptr = new float; // Allocating memory for CGPA
+            *cgpaptr = cgpa; // Storing CGPA value
         }
     
-        void getI(){
-            cout<<"name: "<<name<<endl;
-            cout<<"cgpa: "<<*cgpaptr<<endl;
-    
+        // Function to display student information
+        void getI() {
+            cout << "Name: " << name << endl;
+            cout << "CGPA: " << *cgpaptr << endl;
         }
     
-        student(student &obj){
-            this->name = obj.name;
-            this->cgpaptr = obj.cgpaptr;
+        // Deep Copy Constructor
+        student(student &obj) {
+            cout << "Deep Copy Constructor" << endl;
+            this->name = obj.name; // Copying name
+            cgpaptr = new float; // Allocating new memory for CGPA
+            *cgpaptr = *obj.cgpaptr; // Copying CGPA value
+        }
+    
+        // Destructor
+        ~student() {
+            cout << "Destructor called for " << name << endl;
+            delete cgpaptr; // Deleting allocated memory to prevent memory leak
         }
     };
     
-    int main(){
-        student s1("Aksh", 9.9);
-        student s2 = s1;
+    int main() {
+        student s1("Aksh", 9.9); // Creating object s1
+        student s2 = s1; // Copying s1 to s2 (Deep Copy)
+        student s3 = s1; // Copying s1 to s3 (Deep Copy)
     
-        s1.getI();
-        *(s2.cgpaptr) = 9.5;
-        s1.getI();
-        cout<<"s2";
-        s2.getI();
+        s1.getI(); // Displaying s1 details
+        *(s2.cgpaptr) = 9.5; // Modifying s2's CGPA, should not affect s1 due to deep copy
+        s1.getI(); // Checking if s1 remains unaffected
     
+        s2.name = "A"; // Changing name of s2
+        s2.getI(); // Displaying s2 details
     
-        return 0;
+        s3.name = "B"; // Changing name of s3
+        s3.getI(); // Displaying s3 details
+    
+        return 0; // Destructor will be automatically called for all objects
     }
+    
