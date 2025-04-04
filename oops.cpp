@@ -181,21 +181,73 @@ class student {
         }
     };
     
-    int main() {
-        student s1("Aksh", 9.9); // Creating object s1
-        student s2 = s1; // Copying s1 to s2 (Deep Copy)
-        student s3 = s1; // Copying s1 to s3 (Deep Copy)
+    // int main() {
+    //     student s1("Aksh", 9.9); // Creating object s1
+    //     student s2 = s1; // Copying s1 to s2 (Deep Copy)
+    //     student s3 = s1; // Copying s1 to s3 (Deep Copy)
     
-        s1.getI(); // Displaying s1 details
-        *(s2.cgpaptr) = 9.5; // Modifying s2's CGPA, should not affect s1 due to deep copy
-        s1.getI(); // Checking if s1 remains unaffected
+    //     s1.getI(); // Displaying s1 details
+    //     *(s2.cgpaptr) = 9.5; // Modifying s2's CGPA, should not affect s1 due to deep copy
+    //     s1.getI(); // Checking if s1 remains unaffected
     
-        s2.name = "A"; // Changing name of s2
-        s2.getI(); // Displaying s2 details
+    //     s2.name = "A"; // Changing name of s2
+    //     s2.getI(); // Displaying s2 details
     
-        s3.name = "B"; // Changing name of s3
-        s3.getI(); // Displaying s3 details
+    //     s3.name = "B"; // Changing name of s3
+    //     s3.getI(); // Displaying s3 details
     
-        return 0; // Destructor will be automatically called for all objects
+    //     return 0; // Destructor will be automatically called for all objects
+    // }
+    
+
+
+    //polymorphism // constructour overloading
+
+    //types ->compile time p
+    // -> run time p
+
+    //  -> ability of object to take on different form depending upon context
+
+    class teacher{
+        public:
+            string name;
+        
+
+        teacher (){
+            cout<<"non parametrized constructor";
+        } 
+        teacher(string name){
+            this->name = name ;
+            cout<<"parametrized"; 
+        }
+        private :
+            float salary;
+    };
+
+    // int main(){
+
+    //     teacher t1;
+
+    //     return 0;
+    // }
+
+
+
+// -> compile tiem p 
+//FUNCTION OVERLOADING
+
+class Print{
+public:
+    void show(int x ){
+        cout<<"int:"<<x<<endl;
     }
-    
+    void show(char ch ){
+        cout<<"char:"<<ch<<endl;
+    }
+};
+
+int main(){
+    Print p1;
+    p1.show(78);
+    p1.show('a');
+}
