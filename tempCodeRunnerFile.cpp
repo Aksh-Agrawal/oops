@@ -1,1 +1,1 @@
- // p.gIN();
+ // virtual void draw ()=0;

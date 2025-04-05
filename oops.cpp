@@ -368,3 +368,26 @@ using namespace std;
 
 
 
+// Abstraction
+
+class shape {
+    public:
+    // virtual void draw ()=0;
+};
+
+class circle : public shape {
+    public:
+
+    void draw(){
+cout<< "drawing a circle";
+    }
+};
+
+
+int main(){
+    circle c1;
+    c1.draw();
+    
+
+    return 0;
+}
