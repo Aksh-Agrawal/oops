@@ -370,24 +370,53 @@ using namespace std;
 
 // Abstraction
 
-class shape {
+// class shape {
+//     public:
+//     // virtual void draw ()=0;
+// };
+
+// class circle : public shape {
+//     public:
+
+//     void draw(){
+// cout<< "drawing a circle";
+//     }
+// };
+
+
+// int main(){
+//     circle c1;
+//     c1.draw();
+
+
+//     return 0;
+// }
+
+
+// static keyword
+
+class AS{
     public:
-    // virtual void draw ()=0;
+    static int x;
+       void incX(){
+        x=0;
+x++;
+       }
 };
 
-class circle : public shape {
-    public:
-
-    void draw(){
-cout<< "drawing a circle";
-    }
-};
-
+// Initialize the static variable outside the class
+int AS::x = 0;
 
 int main(){
-    circle c1;
-    c1.draw();
-    
+     AS obj1;
+     AS obj2;
+obj1.x = 300;
 
-    return 0;
+cout<<obj1.x<<endl;
+cout<<obj2.x<<endl;
+
+
+
+
+
 }
